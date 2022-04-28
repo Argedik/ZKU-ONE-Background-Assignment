@@ -2,9 +2,6 @@
 
 (You can access the "pdf"s in the "documents" section.)
 
-<span style="color: green"> Some greenqwdqwdqwdqw text </span>
-
-
 Let's start by deploying the "Hello world" smart contract.
 
 ![image 1](images/image_1.png)
