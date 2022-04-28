@@ -18,6 +18,8 @@ contract Ballot {
         uint voteCount; // number of accumulated votes
     }
 
+
+    // We define chairperson to show my active wallet account
     address public chairperson;
 
     // This declares a state variable that
@@ -27,7 +29,7 @@ contract Ballot {
     // A dynamically-sized array of `Proposal` structs.
     Proposal[] public proposals;
 
-    uint256 startTime; 
+
     /// Create a new ballot to choose one of `proposalNames`.
     constructor(bytes32[] memory proposalNames) {
         chairperson = msg.sender;
@@ -111,9 +113,28 @@ contract Ballot {
         }
     }
 
+    //Timer start variable
+    uint public _start;    
+
+    //Timer start funciton
+    function startTimer() public {
+        _start = block.timestamp;
+    }
+
+    //Modifier for check timestamp
+    modifier voteEnd(){
+        require(block.timestamp <= _start + 5 minutes,"timer is done");
+        _;
+    }
+
+    //Check the left time function
+    function getTimeLeft() public view returns(uint){
+        return block.timestamp;
+    }
+
     /// Give your vote (including votes delegated to you)
     /// to proposal `proposals[proposal].name`.
-    function vote(uint proposal) external {
+    function vote(uint proposal) voteEnd external{
         Voter storage sender = voters[msg.sender];
         require(sender.weight != 0, "Has no right to vote");
         require(!sender.voted, "Already voted.");
@@ -148,10 +169,6 @@ contract Ballot {
     {
         winnerName_ = proposals[winningProposal()].name;
     }
-    modifier voteEnded(){
-      require(
-        block.timestamp < startTime + 5 minutes, 
-  "Voting time has passed");
-      _;
-   }
+
+
 }
