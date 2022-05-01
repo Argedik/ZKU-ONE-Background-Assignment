@@ -10,6 +10,7 @@ A. Conceptual Knowledge
 4. How would you prove to a colorblind person that two different colored objects are actually of different colors? You could check out Avi Wigderson talk about a similar problem here. 
  - Suppose 2 different objects are tangible objects. I ask him to hold both objects separately in his right and left hand. I ask him to change them behind his back and then show me again. After changing it, I can tell him which hand has the red object and which one is the green object. Even if we play this game 10000 times, I can say 100% correct because I have color knowledge. So, he will believe me that this is of different color.
 
+B. You sure you’re solid with Solidity?
 
 (You can access the "pdf"s in the "documents" section.)
 
